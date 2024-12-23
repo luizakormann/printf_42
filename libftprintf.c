@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luiza <luiza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lukorman <lukorman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:47:52 by lukorman          #+#    #+#             */
-/*   Updated: 2024/12/22 00:18:22 by luiza            ###   ########.fr       */
+/*   Updated: 2024/12/23 17:25:28 by lukorman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	ft_printf(const char *str, ...)
     va_start(args, str);
     va_end(args);
 
-	// se mais argumentos, cria a lista de args do tipo va_list
-		//para iniciar a lista, ft va_start antes da va_list
 }
 
 /*

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luiza <luiza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lukorman <lukorman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 23:57:00 by luiza             #+#    #+#             */
-/*   Updated: 2024/12/22 00:42:01 by luiza            ###   ########.fr       */
+/*   Updated: 2024/12/23 17:25:25 by lukorman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,15 @@ int paramtype(char c, va_list args)
     int     res;
 
     res = 0;
-    
+
     if (c == 'c')
         res = ft_putchar(va_arg(args, int), STDOUT);
-}
-
-int ft_putchar(char c, int fd)
-{
-	return (write(fd, &c, 1));
 }
 
 static char *paramcases(va_list args, char c)
 {
     char    *param;
-    
+
     param = NULL;
     if (c == '%')
         param = "%";
@@ -38,7 +33,7 @@ static char *paramcases(va_list args, char c)
         param = checkstr(va_arg(args, char *));
     else if (c == 'd' || c == 'i')
         param = ft_itoa(va_arg(args, int));
-    /* 
+    /*
     faltam:
     p -> imprime endereço do ponteiro void em formato hexa
     u -> imprime numero decimal (base 10) sem sinal
