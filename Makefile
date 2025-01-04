@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lukorman <lukorman@student.42.fr>          +#+  +:+       +#+         #
+#    By: luiza <luiza@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 20:43:18 by lukorman          #+#    #+#              #
-#    Updated: 2024/12/20 20:45:02 by lukorman         ###   ########.fr        #
+#    Updated: 2025/01/04 01:39:08 by luiza            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,11 +23,8 @@ NAME	= libftprintf.a
 #                                   files                                      #
 # **************************************************************************** #
 
-SRC_FILES	=
-SRC_BONUS	=
+SRC_FILES	= ft_printf.c ft_printf_utils.c ft_printf_hexas.c
 OBJS_FILES	= $(SRC_FILES:.c=.o)
-#OBJS_BONUS	= $(SRC_BONUS:.c=.o)
-#ALL_OBJS	= $(OBJS_FILES) $(OBJS_BONUS)
 
 # **************************************************************************** #
 #                              compile commands                                #
@@ -35,16 +32,7 @@ OBJS_FILES	= $(SRC_FILES:.c=.o)
 
 AR	:= ar -rcs
 COMPILE_OBJS	= $(CC) $(CFLAGS) -c $< -o $@
-COMPILE_LIB_FILES	= $(AR) $(NAME) $(OBJS_FILES)
-#COMPILE_LIB_BONUS	= $(AR) $(NAME) $(ALL_OBJS)
-
-# **************************************************************************** #
-#                                 check relink                                 #
-# **************************************************************************** #
-
-ifeq ($(findstring bonus,$(MAKECMDGOALS)),bonus)
-	OBJS += $(OBJS_BONUS)
-endif
+COMPILE_FILES	= $(AR) $(NAME) $(OBJS_FILES)
 
 # **************************************************************************** #
 #                                  targets                                     #
@@ -56,10 +44,7 @@ all: $(NAME)
 	$(COMPILE_OBJS)
 
 $(NAME): $(OBJS_FILES)
-	$(COMPILE_LIB_FILES)
-
-bonus: $(ALL_OBJS)
-	$(COMPILE_LIB_BONUS)
+	$(COMPILE_FILES)
 
 clean:
 	$(RM) $(ALL_OBJS)

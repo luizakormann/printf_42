@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lukorman <lukorman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luiza <luiza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:40:59 by lukorman          #+#    #+#             */
-/*   Updated: 2024/12/23 17:24:27 by lukorman         ###   ########.fr       */
+/*   Updated: 2025/01/04 00:23:11 by luiza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-#define LIBFTPRINTF_H
-
-# ifndef STDOUT
-#  define STDOUT 1
-# endif
-
-# include "libftprintf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
 # include <stddef.h>
 # include <unistd.h>
+# include <stdlib.h>
 
 int	ft_printf(const char *str, ...);
-int paramtype(char c, va_list args);
-int ft_putchar(char c, int fd);
-static char *paramcases(va_list args, char c);
-char	*ft_itoa(int n);
+int	puthexa_low(unsigned int nbr);
+int	puthexa_up(unsigned int nbr);
+int	putnbr_unsigned(unsigned int nbr);
+int	ft_putstr(const char *str);
+int	ft_putchar(int c);
+int	putnbr(int num);
+int	ft_putpnt(unsigned long pnt);
 
 #endif
