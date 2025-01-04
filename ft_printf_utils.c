@@ -6,7 +6,7 @@
 /*   By: luiza <luiza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 23:57:00 by luiza             #+#    #+#             */
-/*   Updated: 2025/01/04 02:10:25 by luiza            ###   ########.fr       */
+/*   Updated: 2025/01/04 03:51:57 by luiza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,47 +14,49 @@
 
 int	ft_putchar(int c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
 
 int	ft_putstr(const char *str)
 {
-	int	str_count;
+	int	count;
 
-	str_count = 0;
 	if (!str)
 		return (ft_putstr("(null)"));
-	while (str[str_count])
-		ft_putchar(str[str_count++]);
-	return (str_count);
+	count = 0;
+	while (*str)
+	{
+		count += ft_putchar(*str);
+		str++;
+	}
+	return (count);
 }
 
-int	putnbr_unsigned(unsigned int nbr)
-{
-	int	nbr_count;
-
-	nbr_count = 0;
-	if (nbr >= 10)
-		nbr_count += putnbr_unsigned(nbr / 10);
-	nbr_count += ft_putchar((nbr % 10) + '0');
-	return (nbr_count);
-}
-
-int	putnbr(int num)
+int	putnbr(int n)
 {
 	int		count;
 	long	number;
 
 	count = 0;
-	number = num;
-	if (num < 0)
+	number = n;
+	if (number < 0)
 	{
 		count += ft_putchar('-');
-		number *= -1;
+		number = -number;
 	}
 	if (number >= 10)
 		count += putnbr(number / 10);
 	count += ft_putchar((number % 10) + '0');
+	return (count);
+}
+
+int	putnbr_unsigned(unsigned int n)
+{
+	int	count;
+
+	count = 0;
+	if (n >= 10)
+		count += putnbr_unsigned(n / 10);
+	count += ft_putchar((n % 10) + '0');
 	return (count);
 }

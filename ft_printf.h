@@ -19,12 +19,25 @@
 # include <stdlib.h>
 
 int	ft_printf(const char *str, ...);
-int	puthexa_low(unsigned int nbr);
-int	puthexa_up(unsigned int nbr);
-int	putnbr_unsigned(unsigned int nbr);
-int	ft_putstr(const char *str);
 int	ft_putchar(int c);
-int	putnbr(int num);
-int	ft_putpnt(unsigned long pnt);
+int	ft_putstr(const char *str);
+int	putnbr(int n);
+int	putnbr_unsigned(unsigned int n);
+int	ft_putpnt(void *ptr);
+int	puthexa_low(unsigned int n);
+int	puthexa_up(unsigned int n);
+int	wrap_char(va_list *args);
+int	wrap_str(va_list *args);
+int	wrap_int(va_list *args);
+int	wrap_uint(va_list *args);
+int	wrap_ptr(va_list *args);
+int	wrap_hex_low(va_list *args);
+int	wrap_hex_up(va_list *args);
+
+typedef struct s_format
+{
+	char	specifier;
+	int		(*func)(va_list *);
+}	t_format;
 
 #endif

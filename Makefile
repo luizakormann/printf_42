@@ -6,7 +6,7 @@
 #    By: luiza <luiza@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 20:43:18 by lukorman          #+#    #+#              #
-#    Updated: 2025/01/04 01:39:08 by luiza            ###   ########.fr        #
+#    Updated: 2025/01/04 04:12:11 by luiza            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ NAME	= libftprintf.a
 #                                   files                                      #
 # **************************************************************************** #
 
-SRC_FILES	= ft_printf.c ft_printf_utils.c ft_printf_hexas.c
+SRC_FILES	= ft_printf.c ft_printf_utils.c ft_printf_hexas.c wraps_utils.c\
+wraps_hexas.c
 OBJS_FILES	= $(SRC_FILES:.c=.o)
 
 # **************************************************************************** #

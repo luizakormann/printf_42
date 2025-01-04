@@ -6,30 +6,31 @@
 /*   By: luiza <luiza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:47:52 by lukorman          #+#    #+#             */
-/*   Updated: 2025/01/04 02:05:17 by luiza            ###   ########.fr       */
+/*   Updated: 2025/01/04 04:18:59 by luiza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	paramcases(va_list args, char c);
+static void	init_formats(t_format *formats);
+static int	handle_format(va_list *args, char specifier);
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
 	int		count;
-	size_t	i;
+	int		i;
 
-	count = 0;
-	i = 0;
 	if (!str)
 		return (-1);
 	va_start(args, str);
+	count = 0;
+	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '%')
+		if (str[i] == '%' && str[i + 1])
 		{
-			count += paramcases(args, str[i + 1]);
+			count += handle_format(&args, str[i + 1]);
 			i++;
 		}
 		else
@@ -40,26 +41,40 @@ int	ft_printf(const char *str, ...)
 	return (count);
 }
 
-static int	paramcases(va_list args, char c)
+static void	init_formats(t_format *formats)
 {
-	int	param_count;
+	formats[0].specifier = 'c';
+	formats[0].func = wrap_char;
+	formats[1].specifier = 's';
+	formats[1].func = wrap_str;
+	formats[2].specifier = 'd';
+	formats[2].func = wrap_int;
+	formats[3].specifier = 'i';
+	formats[3].func = wrap_int;
+	formats[4].specifier = 'u';
+	formats[4].func = wrap_uint;
+	formats[5].specifier = 'p';
+	formats[5].func = wrap_ptr;
+	formats[6].specifier = 'x';
+	formats[6].func = wrap_hex_low;
+	formats[7].specifier = 'X';
+	formats[7].func = wrap_hex_up;
+}
 
-	param_count = 0;
-	if (c == '%')
-		param_count += ft_putchar('%');
-	else if (c == 'c')
-		param_count += ft_putchar(va_arg(args, int));
-	else if (c == 's')
-		param_count += ft_putstr(va_arg(args, const char *));
-	else if (c == 'd' || c == 'i')
-		param_count = putnbr(va_arg(args, int));
-	else if (c == 'p')
-		param_count += ft_putpnt(va_arg(args, unsigned long));
-	else if (c == 'u')
-		param_count += putnbr_unsigned(va_arg(args, unsigned int));
-	else if (c == 'X')
-		param_count += puthexa_up(va_arg(args, unsigned int));
-	else if (c == 'x')
-		param_count += puthexa_low(va_arg(args, unsigned int));
-	return (param_count);
+static int	handle_format(va_list *args, char specifier)
+{
+	t_format	formats[8];
+	int			i;
+
+	init_formats(formats);
+	if (specifier == '%')
+		return (ft_putchar('%'));
+	i = 0;
+	while (i < 8)
+	{
+		if (formats[i].specifier == specifier)
+			return (formats[i].func(args));
+		i++;
+	}
+	return (0);
 }
