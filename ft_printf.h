@@ -22,7 +22,7 @@ int	ft_printf(const char *str, ...);
 int	ft_putchar(int c);
 int	ft_putstr(const char *str);
 int	putnbr(int n);
-int	putnbr_unsigned(unsigned int n);
+int	putnbr_u(unsigned int n);
 int	ft_putpnt(void *ptr);
 int	puthexa_low(unsigned int n);
 int	puthexa_up(unsigned int n);

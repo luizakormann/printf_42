@@ -6,7 +6,7 @@
 /*   By: luiza <luiza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 23:57:00 by luiza             #+#    #+#             */
-/*   Updated: 2025/01/04 03:51:57 by luiza            ###   ########.fr       */
+/*   Updated: 2025/01/04 04:37:09 by luiza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ int	putnbr(int n)
 	return (count);
 }
 
-int	putnbr_unsigned(unsigned int n)
+int	putnbr_u(unsigned int n)
 {
 	int	count;
 
 	count = 0;
 	if (n >= 10)
-		count += putnbr_unsigned(n / 10);
+		count += putnbr_u(n / 10);
 	count += ft_putchar((n % 10) + '0');
 	return (count);
 }

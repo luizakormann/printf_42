@@ -6,7 +6,7 @@
 /*   By: luiza <luiza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 04:01:05 by luiza             #+#    #+#             */
-/*   Updated: 2025/01/04 04:02:28 by luiza            ###   ########.fr       */
+/*   Updated: 2025/01/04 04:39:21 by luiza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	wrap_int(va_list *args)
 
 int	wrap_uint(va_list *args)
 {
-	return (putnbr_unsigned(va_arg(*args, unsigned int)));
+	return (putnbr_u(va_arg(*args, unsigned int)));
 }

@@ -6,7 +6,7 @@
 /*   By: luiza <luiza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:47:52 by lukorman          #+#    #+#             */
-/*   Updated: 2025/01/04 04:18:59 by luiza            ###   ########.fr       */
+/*   Updated: 2025/01/04 04:38:12 by luiza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ static int	handle_format(va_list *args, char specifier)
 
 	init_formats(formats);
 	if (specifier == '%')
-		return (ft_putchar('%'));
+	{
+		ft_putchar('%');
+		return (1);
+	}
 	i = 0;
 	while (i < 8)
 	{
