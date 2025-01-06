@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luiza <luiza@student.42.fr>                +#+  +:+       +#+         #
+#    By: lukorman <lukorman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 20:43:18 by lukorman          #+#    #+#              #
-#    Updated: 2025/01/04 04:12:11 by luiza            ###   ########.fr        #
+#    Updated: 2025/01/06 19:34:41 by lukorman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJS_FILES	= $(SRC_FILES:.c=.o)
 
 AR	:= ar -rcs
 COMPILE_OBJS	= $(CC) $(CFLAGS) -c $< -o $@
-COMPILE_FILES	= $(AR) $(NAME) $(OBJS_FILES)
+CREATE_LIB	= $(AR) $(NAME) $(OBJS_FILES)
 
 # **************************************************************************** #
 #                                  targets                                     #
@@ -45,10 +45,10 @@ all: $(NAME)
 	$(COMPILE_OBJS)
 
 $(NAME): $(OBJS_FILES)
-	$(COMPILE_FILES)
+	$(CREATE_LIB)
 
 clean:
-	$(RM) $(ALL_OBJS)
+	$(RM) $(OBJS_FILES)
 
 fclean: clean
 	$(RM) $(NAME)

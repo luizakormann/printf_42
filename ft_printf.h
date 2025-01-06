@@ -24,8 +24,7 @@ int	ft_putstr(const char *str);
 int	putnbr(int n);
 int	putnbr_u(unsigned int n);
 int	ft_putpnt(void *ptr);
-int	puthexa_low(unsigned int n);
-int	puthexa_up(unsigned int n);
+int	puthexa(unsigned long n, int uplow);
 int	wrap_char(va_list *args);
 int	wrap_str(va_list *args);
 int	wrap_int(va_list *args);
@@ -34,10 +33,10 @@ int	wrap_ptr(va_list *args);
 int	wrap_hex_low(va_list *args);
 int	wrap_hex_up(va_list *args);
 
-typedef struct s_format
+typedef struct s_cases
 {
 	char	specifier;
 	int		(*func)(va_list *);
-}	t_format;
+}	t_cases;
 
 #endif

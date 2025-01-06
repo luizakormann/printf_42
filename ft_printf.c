@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luiza <luiza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lukorman <lukorman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:47:52 by lukorman          #+#    #+#             */
-/*   Updated: 2025/01/04 04:38:12 by luiza            ###   ########.fr       */
+/*   Updated: 2025/01/06 20:03:56 by lukorman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	init_formats(t_format *formats);
-static int	handle_format(va_list *args, char specifier);
+static int	handle_case(va_list *args, char specifier);
+static void	init_cases(t_cases *cases);
 
 int	ft_printf(const char *str, ...)
 {
@@ -30,7 +30,7 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%' && str[i + 1])
 		{
-			count += handle_format(&args, str[i + 1]);
+			count += handle_case(&args, str[i + 1]);
 			i++;
 		}
 		else
@@ -41,32 +41,12 @@ int	ft_printf(const char *str, ...)
 	return (count);
 }
 
-static void	init_formats(t_format *formats)
+static int	handle_case(va_list *args, char specifier)
 {
-	formats[0].specifier = 'c';
-	formats[0].func = wrap_char;
-	formats[1].specifier = 's';
-	formats[1].func = wrap_str;
-	formats[2].specifier = 'd';
-	formats[2].func = wrap_int;
-	formats[3].specifier = 'i';
-	formats[3].func = wrap_int;
-	formats[4].specifier = 'u';
-	formats[4].func = wrap_uint;
-	formats[5].specifier = 'p';
-	formats[5].func = wrap_ptr;
-	formats[6].specifier = 'x';
-	formats[6].func = wrap_hex_low;
-	formats[7].specifier = 'X';
-	formats[7].func = wrap_hex_up;
-}
+	t_cases	cases[8];
+	int		i;
 
-static int	handle_format(va_list *args, char specifier)
-{
-	t_format	formats[8];
-	int			i;
-
-	init_formats(formats);
+	init_cases(cases);
 	if (specifier == '%')
 	{
 		ft_putchar('%');
@@ -75,9 +55,29 @@ static int	handle_format(va_list *args, char specifier)
 	i = 0;
 	while (i < 8)
 	{
-		if (formats[i].specifier == specifier)
-			return (formats[i].func(args));
+		if (cases[i].specifier == specifier)
+			return (cases[i].func(args));
 		i++;
 	}
 	return (0);
+}
+
+static void	init_cases(t_cases *cases)
+{
+	cases[0].specifier = 'c';
+	cases[0].func = wrap_char;
+	cases[1].specifier = 's';
+	cases[1].func = wrap_str;
+	cases[2].specifier = 'd';
+	cases[2].func = wrap_int;
+	cases[3].specifier = 'i';
+	cases[3].func = wrap_int;
+	cases[4].specifier = 'u';
+	cases[4].func = wrap_uint;
+	cases[5].specifier = 'p';
+	cases[5].func = wrap_ptr;
+	cases[6].specifier = 'x';
+	cases[6].func = wrap_hex_low;
+	cases[7].specifier = 'X';
+	cases[7].func = wrap_hex_up;
 }

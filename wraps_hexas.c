@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wraps_hexas.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luiza <luiza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lukorman <lukorman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 04:02:45 by luiza             #+#    #+#             */
-/*   Updated: 2025/01/04 04:03:25 by luiza            ###   ########.fr       */
+/*   Updated: 2025/01/06 20:19:25 by lukorman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	wrap_ptr(va_list *args)
 
 int	wrap_hex_low(va_list *args)
 {
-	return (puthexa_low(va_arg(*args, unsigned int)));
+	return (puthexa(va_arg(*args, unsigned int), 0));
 }
 
 int	wrap_hex_up(va_list *args)
 {
-	return (puthexa_up(va_arg(*args, unsigned int)));
+	return (puthexa(va_arg(*args, unsigned int), 1));
 }
