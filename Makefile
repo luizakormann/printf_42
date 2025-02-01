@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lukorman <lukorman@student.42.fr>          +#+  +:+       +#+         #
+#    By: luiza <luiza@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 20:43:18 by lukorman          #+#    #+#              #
-#    Updated: 2025/01/06 19:34:41 by lukorman         ###   ########.fr        #
+#    Updated: 2025/02/01 01:26:23 by luiza            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,23 +17,32 @@
 CC	= cc
 CFLAGS	= -Wall -Wextra -Werror
 RM	= rm -rf
-NAME	= libftprintf.a
+NAME	= $(BIN_DIR)libftprintf.a
+
+# **************************************************************************** #
+#                                    paths                                     #
+# **************************************************************************** #
+
+OBJ_DIR	= obj/
+SRC_DIR = src/
+BIN_DIR = bin/
+INC_DIR = include/
 
 # **************************************************************************** #
 #                                   files                                      #
 # **************************************************************************** #
 
-SRC_FILES	= ft_printf.c ft_printf_utils.c ft_printf_hexas.c wraps_utils.c\
-wraps_hexas.c
-OBJS_FILES	= $(SRC_FILES:.c=.o)
+SRC_FILES	= $(addprefix $(SRC_DIR), ft_printf.c ft_printf_utils.c\
+ft_printf_hexas.c wraps_utils.c wraps_hexas.c)
+OBJS_FILES	= $(notdir $(SRC_FILES:.c=.o))
 
 # **************************************************************************** #
 #                              compile commands                                #
 # **************************************************************************** #
 
 AR	:= ar -rcs
-COMPILE_OBJS	= $(CC) $(CFLAGS) -c $< -o $@
-CREATE_LIB	= $(AR) $(NAME) $(OBJS_FILES)
+COMPILE_FILES	= $(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $(OBJ_DIR)$@
+CREATE_LIB	= $(AR) $(NAME) $(addprefix $(OBJ_DIR), $(OBJS_FILES))
 
 # **************************************************************************** #
 #                                  targets                                     #
@@ -41,17 +50,19 @@ CREATE_LIB	= $(AR) $(NAME) $(OBJS_FILES)
 
 all: $(NAME)
 
-%.o: %.c
-	$(COMPILE_OBJS)
+%.o: $(SRC_DIR)%.c
+	mkdir -p $(OBJ_DIR)
+	$(COMPILE_FILES)
 
 $(NAME): $(OBJS_FILES)
+	mkdir -p $(BIN_DIR)
 	$(CREATE_LIB)
 
 clean:
-	$(RM) $(OBJS_FILES)
+	$(RM) $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(BIN_DIR)
 
 re: fclean all
 
