@@ -45,7 +45,7 @@ gcc -Wall -Wextra -Werror -I . -L . -lftprintf main.c
 ```
 
 ## 🎓 Key Learnings (author's notes)
-This project follows a simple structure with all source files in the root directory:
+This project provided valuable insights into:
 
  - **Variadic Functions** (`stdarg.h`): I deepened my understanding of handling functions with a variable number of arguments, allowing greater flexibility in implementing `ft_printf`.
  - **Linked Lists & "Wildcard Functions"**: In an effort to strengthen my grasp of linked lists, I applied this structure in the project, which led me to explore generic functions (wich I like to call "wildcard functions") to make the code more versatile and modular.
