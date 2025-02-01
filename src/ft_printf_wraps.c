@@ -6,7 +6,7 @@
 /*   By: luiza <luiza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 04:02:45 by luiza             #+#    #+#             */
-/*   Updated: 2025/02/01 01:44:05 by luiza            ###   ########.fr       */
+/*   Updated: 2025/02/01 02:13:23 by luiza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	wrap_str(va_list *args)
 
 int	wrap_int(va_list *args)
 {
-	return (putnbr(va_arg(*args, int)));
+	return (ft_putnbr(va_arg(*args, int)));
 }
 
 int	wrap_uint(va_list *args)
 {
-	return (putnbr_u(va_arg(*args, unsigned int)));
+	return (ft_putnbr_u(va_arg(*args, unsigned int)));
 }
 
 int	wrap_ptr(va_list *args)
@@ -39,10 +39,10 @@ int	wrap_ptr(va_list *args)
 
 int	wrap_hex_low(va_list *args)
 {
-	return (puthexa(va_arg(*args, unsigned int), 0));
+	return (ft_puthexa(va_arg(*args, unsigned int), 0));
 }
 
 int	wrap_hex_up(va_list *args)
 {
-	return (puthexa(va_arg(*args, unsigned int), 1));
+	return (ft_puthexa(va_arg(*args, unsigned int), 1));
 }

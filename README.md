@@ -19,7 +19,7 @@ The functions in this project are categorized based on their logical role:
 | Category | Functions |
 |---------|-----------|
 |Core Functionality|`ft_printf`, `handle_case`, `init_cases`.|
-|Output Functions|`ft_putchar`, `ft_putstr`, `putnbr`, `putnbr_u`, `ft_putptr`, `puthexa`.|
+|Output Functions|`ft_putchar`, `ft_putstr`, `ft_putnbr`, `ft_putnbr_u`, `ft_putptr`, `ft_puthexa`.|
 |Wrapper Functions|`wrap_char`, `wrap_str`, `wrap_int`, `wrap_uint`, `wrap_ptr`, `wrap_hex_low`, `wrap_hex_up`.|
 
 ## ⚙️ Compilation and Usage
