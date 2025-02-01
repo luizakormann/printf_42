@@ -1,16 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wraps_hexas.c                                      :+:      :+:    :+:   */
+/*   ft_printf_wraps.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lukorman <lukorman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luiza <luiza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 04:02:45 by luiza             #+#    #+#             */
-/*   Updated: 2025/01/06 20:52:03 by lukorman         ###   ########.fr       */
+/*   Updated: 2025/02/01 01:44:05 by luiza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
+
+int	wrap_char(va_list *args)
+{
+	return (ft_putchar(va_arg(*args, int)));
+}
+
+int	wrap_str(va_list *args)
+{
+	return (ft_putstr(va_arg(*args, char *)));
+}
+
+int	wrap_int(va_list *args)
+{
+	return (putnbr(va_arg(*args, int)));
+}
+
+int	wrap_uint(va_list *args)
+{
+	return (putnbr_u(va_arg(*args, unsigned int)));
+}
 
 int	wrap_ptr(va_list *args)
 {

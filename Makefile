@@ -6,7 +6,7 @@
 #    By: luiza <luiza@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 20:43:18 by lukorman          #+#    #+#              #
-#    Updated: 2025/02/01 01:26:23 by luiza            ###   ########.fr        #
+#    Updated: 2025/02/01 01:45:03 by luiza            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ INC_DIR = include/
 # **************************************************************************** #
 
 SRC_FILES	= $(addprefix $(SRC_DIR), ft_printf.c ft_printf_utils.c\
-ft_printf_hexas.c wraps_utils.c wraps_hexas.c)
+ft_printf_wraps.c)
 OBJS_FILES	= $(notdir $(SRC_FILES:.c=.o))
 
 # **************************************************************************** #

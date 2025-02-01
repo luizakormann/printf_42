@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lukorman <lukorman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luiza <luiza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:47:52 by lukorman          #+#    #+#             */
-/*   Updated: 2025/01/06 20:03:56 by lukorman         ###   ########.fr       */
+/*   Updated: 2025/02/01 02:08:50 by luiza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 static int	handle_case(va_list *args, char specifier);
 static void	init_cases(t_cases *cases);
@@ -31,12 +31,15 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%' && str[i + 1])
 		{
 			count += handle_case(&args, str[i + 1]);
+			if (str[i + 1] == '%')
+				count++;
 			i++;
 		}
 		else
 			count += ft_putchar(str[i]);
 		i++;
 	}
+	count++;
 	va_end(args);
 	return (count);
 }
@@ -50,7 +53,7 @@ static int	handle_case(va_list *args, char specifier)
 	if (specifier == '%')
 	{
 		ft_putchar('%');
-		return (1);
+		return (0);
 	}
 	i = 0;
 	while (i < 8)
